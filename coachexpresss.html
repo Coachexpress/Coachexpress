@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoachExpress - Accompagnement professionnel au Burkina Faso</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0d2b4e;
+            --secondary: #ffb400;
+            --finance: #3498db;
+            --marketing: #9b59b6;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Nouveau Header Styles */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 15px;
+            gap: 10px;
+        }
+
+        /* LOGO */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo-icon {
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        /* NAVIGATION */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ICÔNES DE CONTACT */
+        .contact-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-icons a {
+            color: white;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease, color 0.3s;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .contact-icons a:hover {
+            transform: scale(1.2);
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 43, 78, 0.9), rgba(13, 43, 78, 0.8)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 180, 0, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #e6a200;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 180, 0, 0.6);
+        }
+
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding: 0 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, #0a1f37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title h2:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Service Cards */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 25px 25px 15px;
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .finance .card-icon {
+            color: var(--finance);
+        }
+
+        .marketing .card-icon {
+            color: var(--marketing);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 1rem;
+            padding: 0 20px 20px;
+            flex-grow: 1;
+        }
+
+        .card-actions {
+            padding: 0 20px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        .btn-call {
+            background-color: var(--finance);
+            color: white;
+        }
+
+        .btn-call:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-email {
+            background-color: var(--marketing);
+            color: white;
+        }
+
+        .btn-email:hover {
+            background-color: #8e44ad;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin: 10px 0;
+            }
+
+            .contact-icons {
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .logo {
+                justify-content: center;
+                margin-bottom: 5px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h2 {
+                font-size: 1.7rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nouveau Header -->
+    <header>
+        <div class="header-flex container">
+            <div class="logo">
+                <i class="fas fa-bolt logo-icon"></i>
+                <span class="logo-text">Coach<span>Express</span></span>
+            </div>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#apropos">À propos</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="contact-icons">
+                <a href="https://wa.me/22676171850" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:+22676171850" title="Appeler"><i class="fas fa-phone-alt"></i></a>
+                <a href="mailto:coachexpress226@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Expertise en impôts, finance et marketing digital au Burkina Faso</h2>
+            <p>Transformez vos défis économiques en opportunités avec notre accompagnement professionnel sur mesure. Solutions adaptées au contexte burkinabè pour les entreprises et entrepreneurs.</p>
+            <a href="#services" class="cta-button">Découvrir nos services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="container" id="services">
+        <!-- Impôts-Finance Section -->
+        <div id="impots-finance">
+            <div class="section-title">
+                <h2>Impôts & Finance</h2>
+            </div>
+            <p class="section-description">Des solutions fiscales et financières sur mesure pour optimiser votre entreprise dans le contexte économique burkinabè.</p>
+            
+            <div class="services-container">
+                <!-- Service 1 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="card-title">Déclaration d'impôts</h3>
+                    </div>
+                    <p class="card-description">Accompagnement personnalisé pour une déclaration d'impôts conforme à la législation fiscale burkinabè, optimisant vos obligations.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de déclaration d'impôts." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-folder-plus"></i>
+                        </div>
+                        <h3 class="card-title">Montage de dossiers financiers</h3>
+                    </div>
+                    <p class="card-description">Création de dossiers financiers solides et convaincants pour vos demandes de prêt, investissement ou partenariats.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de montage de dossiers financiers." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3 class="card-title">Recherche de financement public</h3>
+                    </div>
+                    <p class="card-description">Accès aux programmes de financement public et accompagnement dans le processus de candidature pour votre entreprise.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de recherche de financement public." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="mailto:coachexpress226@gmail.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i> Envoyer un email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="card-title">Enregistrement d'entreprise</h3>
+                    </div>
+                    <p class="card-description">Guidance complète pour l'enregistrement légal de votre entreprise au Burkina Faso, de la création à l'immatriculation.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service d'enregistrement d'entreprise." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3 class="card-title">Optimisation fiscale</h3>
+                    </div>
+                    <p class="card-description">Stratégies personnalisées pour réduire légalement votre charge fiscale tout en restant conforme à la réglementation.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service d'optimisation fiscale." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="mailto:coachexpress226@gmail.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i> Envoyer un email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="card-title">Conformité fiscale</h3>
+                    </div>
+                    <p class="card-description">Vérification et mise en conformité de votre entreprise avec les obligations fiscales burkinabè.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de conformité fiscale." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3 class="card-title">Analyse financière</h3>
+                    </div>
+                    <p class="card-description">Diagnostic complet de votre situation financière avec recommandations pour améliorer votre rentabilité.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service d'analyse financière." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="mailto:coachexpress226@gmail.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i> Envoyer un email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3 class="card-title">Gestion de trésorerie</h3>
+                    </div>
+                    <p class="card-description">Optimisation de votre gestion de trésorerie pour une meilleure santé financière de votre entreprise.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de gestion de trésorerie." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 9 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3 class="card-title">Élaboration de contrats</h3>
+                    </div>
+                    <p class="card-description">Rédaction de contrats professionnels adaptés à la législation burkinabè pour sécuriser vos relations commerciales.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service d'élaboration de contrats." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="mailto:coachexpress226@gmail.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i> Envoyer un email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 10 -->
+                <div class="service-card finance">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3 class="card-title">Accompagnement bancaire</h3>
+                    </div>
+                    <p class="card-description">Médiation et négociation avec les institutions bancaires pour obtenir les meilleures conditions pour votre entreprise.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service d'accompagnement bancaire." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Marketing Digital - Business Section -->
+        <div id="marketing-business">
+            <div class="section-title">
+                <h2>Marketing Digital & Business</h2>
+            </div>
+            <p class="section-description">Boostez votre présence en ligne et transformez vos idées en business rentable avec nos stratégies adaptées au marché local.</p>
+            
+            <div class="services-container">
+                <!-- Service 1 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <h3 class="card-title">Marketing des réseaux sociaux</h3>
+                    </div>
+                    <p class="card-description">Stratégies efficaces pour développer votre présence sur les réseaux sociaux et engager votre audience cible.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de marketing des réseaux sociaux." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="card-title">Vente en ligne</h3>
+                    </div>
+                    <p class="card-description">Mise en place de plateformes de vente en ligne et stratégies pour booster vos ventes sur internet.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de vente en ligne." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="mailto:coachexpress226@gmail.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i> Envoyer un email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h3 class="card-title">Copywriting persuasif</h3>
+                    </div>
+                    <p class="card-description">Rédaction de contenus persuasifs pour vos campagnes publicitaires, sites web et réseaux sociaux.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de copywriting." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="card-title">Création de site web</h3>
+                    </div>
+                    <p class="card-description">Conception de sites web professionnels, responsives et optimisés pour le référencement et la conversion.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par la création de site web." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="mailto:coachexpress226@gmail.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i> Envoyer un email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 class="card-title">Stratégie business</h3>
+                    </div>
+                    <p class="card-description">Développement, refondation et proposition d'idées business adaptées à votre profil et au marché burkinabè.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de stratégie business." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-ad"></i>
+                        </div>
+                        <h3 class="card-title">Publicité en ligne</h3>
+                    </div>
+                    <p class="card-description">Création et gestion de campagnes publicitaires sur Google, Facebook et autres plateformes digitales.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de publicité en ligne." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="mailto:coachexpress226@gmail.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i> Envoyer un email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="card-title">Analyse de marché</h3>
+                    </div>
+                    <p class="card-description">Étude approfondie de votre marché cible pour développer des stratégies commerciales efficaces.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service d'analyse de marché." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="card-title">Développement d'idées business</h3>
+                    </div>
+                    <p class="card-description">Accompagnement pour transformer vos idées en projets concrets et viables sur le marché burkinabè.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de développement d'idées business." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="mailto:coachexpress226@gmail.com" class="btn btn-email">
+                            <i class="fas fa-envelope"></i> Envoyer un email
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 9 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="card-title">Refondation de business</h3>
+                    </div>
+                    <p class="card-description">Diagnostic et restructuration de votre entreprise pour améliorer sa performance et sa rentabilité.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de refondation de business." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 10 -->
+                <div class="service-card marketing">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="card-title">Coaching entrepreneurial</h3>
+                    </div>
+                    <p class="card-description">Accompagnement personnalisé pour développer vos compétences entrepreneuriales et manager votre entreprise.</p>
+                    <div class="card-actions">
+                        <a href="https://wa.me/22676171850?text=Bonjour! Je suis intéressé par le service de coaching entrepreneurial." class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
+                        </a>
+                        <a href="tel:+22676171850" class="btn btn-call">
+                            <i class="fas fa-phone"></i> Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Pourquoi choisir CoachExpress ?</h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Expertise Locale</h3>
+                    <p>Connaissance approfondie du contexte économique et réglementaire burkinabè</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Accompagnement Personnalisé</h3>
+                    <p>Solutions adaptées à votre situation spécifique et à vos objectifs</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Résultats Tangibles</h3>
+                    <p>Approche orientée résultats pour maximiser votre retour sur investissement</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>Solutions créatives combinant tradition et modernité pour votre business</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CoachExpress</h3>
+                    <p>Votre partenaire pour le développement de votre entreprise au Burkina Faso. Expertise en fiscalité, finance et marketing digital adaptée au contexte local.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#impots-finance"><i class="fas fa-arrow-right"></i> Impôts & Finance</a></li>
+                        <li><a href="#marketing-business"><i class="fas fa-arrow-right"></i> Marketing Digital & Business</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <div>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+226 76 17 18 50</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <span>+226 76 17 18 50</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <span>coachexpress226@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CoachExpress. Tous droits réservés. Conçu pour l'écosystème entrepreneurial burkinabè.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll for service cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
